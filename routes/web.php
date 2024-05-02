@@ -15,7 +15,7 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->get();  //to solve n+1 problem.
+    $jobs = Job::with('employer')->paginate(3);  //to solve n+1 problem.
 
     return view('jobs', [
         'jobs' => $jobs
