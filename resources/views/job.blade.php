@@ -3,9 +3,11 @@
         Job 
     </x-slot:heading>
     
-    <h2 class="font-bold text-lg text-cyan-500">{{ $job['title'] }}</h2>
+    <div class="bg-purple-200 hover:bg-purple-300 p-5 rounded-lg">
+        <h2 class="font-bold text-lg text-cyan-500">{{ $job['title'] }}</h2>
 
-    <p>
-        This job pays {{ $job['salary'] }} per year.
-    </p>
+        <p>
+            This job pays {{ $job['salary'] }} per year.
+        </p>
+    </div>
 </x-layout>
