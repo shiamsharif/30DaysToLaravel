@@ -1,11 +1,13 @@
 <x-layout>
     <x-slot:heading>
-        Create 
+        Create Job
     </x-slot:heading>
     
     
-<form>
-    <div class="space-y-12">
+<form method="POST" action="/jobs">
+  @csrf
+  
+  <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
         <h2 class="text-base font-semibold leading-7 text-gray-900">Create a NEW Job </h2>
         <p class="mt-1 text-sm leading-6 text-gray-600">We just need a handful of details from you.</p>
@@ -17,7 +19,7 @@
             <div class="mt-2">
               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 
-                <input type="text" name="username" id="username" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="  jani na kicu">
+                <input type="text" name="title" id="title" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="  jani na kicu">
               </div>
             </div>
           </div>
@@ -27,7 +29,7 @@
             <div class="mt-2">
               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 
-                <input type="text" name="username" id="username" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" $50,000 per year">
+                <input type="text" name="salary" id="salary" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" $50,000 per year">
               </div>
             </div>
           </div>
