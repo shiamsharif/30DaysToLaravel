@@ -19,8 +19,13 @@
             <div class="mt-2">
               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 
-                <input type="text" name="title" id="title" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Title " >
+                <input type="text" name="title" id="title" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Title " required>
               </div>
+
+              {{-- Validation: --}}
+              @error('title')
+                <p class="text-xs text-red-600 font-semibold mt-1">{{ $message }}</p>
+              @enderror
             </div>
           </div>
 
@@ -29,13 +34,18 @@
             <div class="mt-2">
               <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 
-                <input type="text" name="salary" id="salary" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" $50,000 per year">
+                <input type="text" name="salary" id="salary" class="block flex-1 border-0 px-3 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" $50,000 per year" required>
               </div>
+
+              {{-- Validation: --}}
+              @error('salary')
+                <p class="text-xs text-red-600 font-semibold mt-1">{{ $message }}</p>
+              @enderror
             </div>
           </div>
         </div>
   
-        {{-- Validation: --}}
+        {{-- Validation:
         <div class="mt-5">
           @if($errors->any()) 
           <ul>
@@ -44,7 +54,7 @@
             @endforeach
           </ul>
         @endif
-        </div>
+        </div> --}}
         
       </div> 
     </div>
