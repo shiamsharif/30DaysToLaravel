@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
@@ -10,13 +10,7 @@ Route::get('/', function () {
 });
 
 // Index
-Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->latest()->simplePaginate(3);  //to solve n+1 problem.
-
-    return view('jobs.index', [
-        'jobs' => $jobs
-    ]);
-});
+Route::get('/jobs', [JobController::class, 'index']);
 
 
 // Create
