@@ -9,72 +9,32 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Index
+// Index:
 Route::get('/jobs', [JobController::class, 'index']);
 
 
-// Create
-Route::get('/jobs/create', function () {
-    return view('jobs.create');
-});
+// Create:
+Route::get('/jobs/create', [JobController::class, 'create']);
 
-// Show
-Route::get('/jobs/{job}', function (Job $job) {
-    return view('jobs.show', ['job' => $job]);
-});
+// Show:
+Route::get('/jobs/{job}', [JobController::class, 'show']);
 
-// Store
-Route::post('/jobs', function () {
-    request()->validate([
-        'title' => ['required', 'min:3'],
-        'salary' => ['required']
-    ]);
 
-    Job::create([
-        'title' => request('title'),
-        'salary' => request('salary'),
-        'employer_id' => 1
-    ]);
+// Store:
+Route::post('/jobs', [JobController::class, 'store']);
 
-    return redirect('/jobs');        
-});
 
 // Edit job:
-Route::get('/jobs/{job}/edit', function (Job $job) {
-    return view('jobs.edit', ['job' => $job]);
-});
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
+
 
 // Update:
-Route::patch('/jobs/{job}', function (Job $job) {
-    // authorize (on hold...)
+Route::patch('/jobs/{job}', [JobController::class, 'update']);
 
-
-    // validation:
-    request()->validate([
-        'title' => ['required', 'min:3'],
-        'salary' => ['required']
-    ]);
-
-    $job->update([
-        'title' => request('title'),
-        'salary' => request('salary'),
-    ]);
-
-    // redirect to the job page
-    return redirect('/jobs/'. $job->id);
-});
 
 // Destroy or Delete:
-Route::delete('/jobs/{job}', function (Job $job) {
-    // authorize (on hold..)
-    // Delete the job:
-        //* $job = Job::findOrFail($id);
-        //* $job->delete();
-    $job->delete();
+Route::delete('/jobs/{job}', [JobController::class, 'destroy']);
 
-    // redirect
-    return redirect('/jobs');
-});
 
 Route::get('/contact', function () {
     return view('contact');
